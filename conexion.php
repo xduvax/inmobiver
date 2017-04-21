@@ -1,6 +1,6 @@
 <?php 
 	$servidor = "127.0.0.1";
-	$usuario = "root";
+	$usuario = "inmobiver-user";
 	$clave = "inmobiver+123";
 	$bd = "base3";
 
