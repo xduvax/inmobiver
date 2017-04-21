@@ -1,7 +1,7 @@
 <?php 
 	$servidor = "127.0.0.1";
 	$usuario = "root";
-	$clave = "lmsley";
+	$clave = "inmobiver+123";
 	$bd = "base3";
 
 	$mysqli = new mysqli($servidor, $usuario, $clave, $bd);
