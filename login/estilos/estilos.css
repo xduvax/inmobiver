@@ -1,0 +1,41 @@
+@import url(https://fonts.googleapis.com/css?family=Pangolin);
+@import url(https://fonts.googleapis.com/css?family=Sansita);
+@import url(https://fonts.googleapis.com/css?family=Lato);
+@import url(https://fonts.googleapis.com/css?family=Roboto);
+
+html,body{
+	margin: 0px;
+	padding: 0px;
+	height: 100%;
+	font-family: 'Roboto', sans-serif;
+}
+.tabla_principal{
+	width: 100%;
+	float: left;
+	display: inline-block;
+	text-align: center;
+}
+.contenido{
+	display: inline-block;
+	width: 1000px;
+	text-align: center;
+}
+.titulo-inicio{
+	margin-top: 30px;
+	font-size: 40px;
+	font-family: 'Pangolin', cursive;
+	color: #D14747;
+}
+.container{
+	margin-top: 50px;
+	display: inline-block;
+	width: 250px;
+}
+.cuadro{
+	margin-bottom: 10px;
+	text-align: center;
+}
+.boton{
+	display: inline-block;
+	width: 100px;
+}
