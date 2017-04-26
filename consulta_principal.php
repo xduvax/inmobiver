@@ -1,4 +1,13 @@
-<?php 	
+<?php
+	session_start();
+	if (isset($_SESSION['login']) && $_SESSION['login'] == true) {
+		
+	}
+	else{
+		echo "Para ingresar a esta pagina, debe iniciar sesion...<br>";
+		echo "<a href='login'>Aqui</a>";
+		exit;
+	}
 	include "conexion.php";
 
 	function cambiarFecha($fecha){

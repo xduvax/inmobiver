@@ -7,7 +7,8 @@ html,body{
 	margin: 0px;
 	padding: 0px;
 	height: 100%;
-	background-image: url('../img/fondo9.jpg');
+	/*background-image: url('../img/fondo9.jpg');*/
+	background-color: #FAF0E6;
 	background-repeat: no-repeat;
 	background-size: cover;
 	font-family: 'Roboto', sans-serif;
@@ -59,6 +60,7 @@ html,body{
 }
 .celda_titulo{
 	background-color: #26F7A1;
+	background-color: #CEE7FF;
 	font-family: 'Sansita', sans-serif;
 	font-size: 19px;
 	height: 28px;

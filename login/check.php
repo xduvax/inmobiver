@@ -1,26 +1,33 @@
 <?php 
 	session_start();
+	include "../conexion.php";
 
 	$usuario = $_POST['usuario'];
 	$password = $_POST['password'];
 
-	include "../conexion.php";
-
-	$sql_variable = "SELECT FROM usuarios WHERE usuario = '".$usuario."'";
+	$sql_variable = "SELECT * FROM usuarios WHERE usuario = '".$usuario."'";
 
 	$resultado = $mysqli->query($sql_variable);
-	if ($resultado->num_rows > 0){
-		$row = $resultado->fetch_array(MYSQLI_ASSOC);
-		if (password_verify($password, $row['password'])){
+	if($row = $resultado->fetch_assoc()){
+
+		if(password_verify($password, $row['password'])){
+
 			$_SESSION['login'] = true;
-			$_SESSION['user'] = $usuario;
-			$_SESSION['start'] = time();
-			$_SESSION['expire'] = $_SESSION['start'] + 60;
-			echo "¡Bienvenido! ".$_SESSION['user'];
+	    	$_SESSION['usuario'] = $usuario;
+	   		$_SESSION['start'] = time();
+	    	$_SESSION['expira'] = $_SESSION['start'] + 30;
+			echo "¡Bienvenido! ".$_SESSION['usuario'];
+			?>
+			<script type="text/javascript">location.href='../index.php';</script>
+			<?php
+		}
+		else{
+			echo "User or password incorrectos...";
 		}
 	}
 	else{
-		echo "User or Password incorrectos";
+		echo "User or password incorrectos...";
 	}
+	
 	
 ?>

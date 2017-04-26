@@ -1,3 +1,15 @@
+<?php
+	session_start();
+	error_reporting(E_ERROR);
+	if ($_SESSION['login'] == true) {
+		
+	}
+	else{
+		echo "Para ingresar a esta pagina, debe iniciar sesion...<br>";
+		echo "<a href='login'>Aqui</a>";
+		exit;
+	}
+?>
 <!DOCTYPE html>
 <html>
 <head>
