@@ -19,7 +19,7 @@
 
 			<div class="container">
 				<input id="user" type="text" class="cuadro" placeholder="Usuario">
-				<input id="pass" type="text" class="cuadro" placeholder="Password">
+				<input id="pass" type="Password" class="cuadro" placeholder="Password">
 				<button class="boton">Ingresar</button>
 			</div>
 
