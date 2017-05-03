@@ -124,19 +124,21 @@ function preguntarFecha(elemento){
 	});
 }
 
-function funcionIngresar(caja1,caja2,caja3,caja4,caja5,caja6,caja7,caja8,caja9,caja10){
+function funcionIngresar(caja1,caja2,caja3,caja4,caja5,caja6,caja7,caja8,caja9,caja10,caja11,caja12){
 	
 	var parametros = {
 		"escritura" : caja1,
 		"enajenante" : caja2,
 		"adquiriente" : caja3,
 		"primer" : caja4,
-		"segundo" : caja5,
-		"recepcion" : caja6,
-		"pago" : caja7,
-		"salida" : caja8,
-		"entrega" : caja9,
-		"costo" : caja10
+		"costo_primer" : caja5,
+		"segundo" : caja6,
+		"testimonio" : caja7,
+		"costo_testimonio" : caja8,
+		"pago" : caja9,
+		"salida" : caja10,
+		"entrega" : caja11,
+		"costo" : caja12
 	};
 	$.ajax({
 		url: 'ingresar.php',
@@ -153,7 +155,7 @@ $(document).ready(function(){ //////// EVENTOS ////////
 
 	$('.entrada').on('keypress',function(event) {
 		if (event.which === 13) {
-			funcionIngresar( $('#caja1').val(), $('#caja2').val(), $('#caja3').val(), $('#caja4').val(), $('#caja5').val(), $('#caja6').val(), $('#caja7').val(), $('#caja8').val(), $('#caja9').val(), $('#caja10').val() );
+			funcionIngresar( $('#caja1').val(), $('#caja2').val(), $('#caja3').val(), $('#caja4').val(), $('#caja5').val(), $('#caja6').val(), $('#caja7').val(), $('#caja8').val(), $('#caja9').val(), $('#caja10').val(), $('#caja11').val(), $('#caja12').val() );
 		}
 	});
 
@@ -182,7 +184,7 @@ $(document).ready(function(){ //////// EVENTOS ////////
 				title: 'Atencion',
 				content: '¿Qué accion desea realizar?',
 				useBootstrap: false,
-				boxWidth: '350px',
+				boxWidth: '400px',
 				buttons:{
 					Agregar:{
 						text:'Cambiar fecha',
@@ -203,6 +205,10 @@ $(document).ready(function(){ //////// EVENTOS ////////
 							var valor = "0000-00-00";
 							modificar(clave, campo, valor);
 						}
+					},
+					Cancelar:{
+						text:'Cancelar',
+						action: function(){}
 					}
 				}
 			});

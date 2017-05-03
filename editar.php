@@ -9,12 +9,14 @@
 	if ($campo == 2) {$variable = "enajenante";}
 	if ($campo == 3) {$variable = "adquiriente";}
 	if ($campo == 4) {$variable = "primer_aviso";}
-	if ($campo == 5) {$variable = "segundo_aviso";}
-	if ($campo == 6) {$variable = "fecha_recepcion";}
-	if ($campo == 7) {$variable = "fecha_pago";}
-	if ($campo == 8) {$variable = "fecha_salida";}
-	if ($campo == 9) {$variable = "fecha_entrega";}
-	if ($campo == 10) {$variable = "costo";}
+	if ($campo == 5) {$variable = "costo_primer";}
+	if ($campo == 6) {$variable = "segundo_aviso";}
+	if ($campo == 7) {$variable = "testimonio";}
+	if ($campo == 8) {$variable = "costo_testimonio";}
+	if ($campo == 9) {$variable = "fecha_pago";}
+	if ($campo == 10) {$variable = "fecha_salida";}
+	if ($campo == 11) {$variable = "fecha_entrega";}
+	if ($campo == 12) {$variable = "costo";}
 
 	$query_variable = "UPDATE tabla_registros SET ".$variable."='".$valor."' WHERE id_registro = ".$clave;
 

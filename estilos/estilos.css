@@ -84,7 +84,7 @@ html,body{
 #invisible{
 	display: none;
 }
-.escritura{width: 120px;}
+.corto{width: 120px;}
 .nombres{width: 200px;}
 .fecha{cursor: pointer;}
 .aviso{cursor: pointer;}

@@ -6,8 +6,10 @@
 	$enajenante = $_POST['enajenante'];
 	$adquiriente = $_POST['adquiriente'];
 	$primer = $_POST['primer'];
+	$costo_primer = $_POST['costo_primer'];
 	$segundo = $_POST['segundo'];
-	$recepcion = $_POST['recepcion'];
+	$testimonio = $_POST['testimonio'];
+	$costo_testimonio = $_POST['costo_testimonio'];
 	$pago = $_POST['pago'];
 	$salida = $_POST['salida'];
 	$entrega = $_POST['entrega'];
@@ -15,7 +17,7 @@
 
 	if ($primer == "") {$primer = "0000-00-00";}
 	if ($segundo == "") {$segundo = "0000-00-00";}
-	if ($recepcion == "") {$recepcion = "0000-00-00";}
+	if ($testimonio == "") {$testimonio = "0000-00-00";}
 	if ($pago == "") {$pago = "0000-00-00";}
 	if ($salida == "") {$salida = "0000-00-00";}
 	if ($entrega == "") {$entrega = "0000-00-00";}
@@ -25,8 +27,10 @@
 		enajenante,
 		adquiriente,
 		primer_aviso,
+		costo_primer,
 		segundo_aviso,
-		fecha_recepcion,
+		testimonio,
+		costo_testimonio,
 		fecha_pago,
 		fecha_salida,
 		fecha_entrega,
@@ -36,8 +40,10 @@
 		'".$enajenante."',
 		'".$adquiriente."',
 		'".$primer."',
+		'".$costo_primer."',
 		'".$segundo."',
-		'".$recepcion."',
+		'".$testimonio."',
+		'".$costo_testimonio."',
 		'".$pago."',
 		'".$salida."',
 		'".$entrega."',
