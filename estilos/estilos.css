@@ -90,3 +90,32 @@ html,body{
 .aviso{cursor: pointer;}
 .fechaingreso{cursor:pointer;}
 .clave{width: 120px; cursor: pointer;}
+.boton_eleccion{
+	display: inline-block;
+	background-color: #CEE7FF;
+	font-size: 16px;
+	font-weight: bold;
+	color: #000;
+	cursor: pointer;
+	margin-top: 20px;
+	border: 1px solid #EE4B5E;
+	padding: 5px 10px;
+	text-decoration: none;
+}
+.form-wrapper{
+	display: inline-block;
+	width: 500px;
+	margin-top: 20px;
+}
+.campo-fecha{
+	margin-right:15px;
+	margin-left: 7px;
+	cursor: pointer;
+	text-align: center;
+	font-size: 16px;
+	width: 150px;
+}
+.boton_consulta{
+	display: inline-block;
+	font-size: 16px;
+}

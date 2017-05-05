@@ -163,6 +163,10 @@ $(document).ready(function(){ //////// EVENTOS ////////
 		dateFormat: 'yy/mm/dd'
 	});
 
+	$('.campo-fecha').datepicker({
+		dateFormat: 'yy/mm/dd'
+	});
+
 	$('.fecha').on('click', function() {
 	
 		var elemento = $(this);

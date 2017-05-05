@@ -18,7 +18,7 @@
 	    	$_SESSION['expira'] = $_SESSION['start'] + 30;
 			echo "¡Bienvenido! ".$_SESSION['usuario'];
 			?>
-			<script type="text/javascript">location.href='../index.php';</script>
+			<script type="text/javascript">location.href='../tabla_principal.php';</script>
 			<?php
 		}
 		else{
