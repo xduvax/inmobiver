@@ -257,5 +257,36 @@ $(document).ready(function(){ //////// EVENTOS ////////
 		
 	});
 
+	$('#wrapper2').css('display', 'none');
+
+	$('.boton_consulta').on('click',function() {
+
+		$('#wrapper2').css('display', 'inline-block');
+		var fecha1 = $('#fecha1').val();
+		var fecha2 = $('#fecha2').val();
+		var columna = $('input[name=consulta]:checked').val();
+		var parametros = {
+			"fecha1" : fecha1,
+			"fecha2" : fecha2,
+			"columna" : columna
+		};
+		$.ajax({
+			url: 'consulta_fecha.php',
+			type: 'POST',
+			data: parametros,
+			dataType: 'json',
+			success: function(respuesta){
+				console.log(respuesta);
+				$.each(respuesta, function(index, item){
+					$('#wrapper2').append("<div class='wrapper-fila'>");					
+					$('#wrapper2').append(
+						"<input class='celda' readonly value='"+item.id_registro+"'> <input class='celda' readonly value='"+item.escritura+"'> <input class='celda' readonly value='"+item.enajenante+"'> <input class='celda' readonly value='"+item.adquiriente+"'> <input class='celda' readonly value='"+item.primer_aviso+"'> <input class='celda' readonly value='"+item.costo_primer+"'> <input class='celda' readonly value='"+item.segundo_aviso+"'> <input class='celda' readonly value='"+item.testimonio+"'> <input class='celda' readonly value='"+item.costo_testimonio+"'> <input class='celda' readonly value='"+item.fecha_pago+"'> <input class='celda' readonly value='"+item.fecha_salida+"'> <input class='celda' readonly value='"+item.fecha_entrega+"'> <input class='celda' readonly value='"+item.costo+"'>");
+					$('#wrapper2').append('</div>');
+				});
+			}
+		});
+
+	});
+
 
 }); ///////// DOCUMENT READY /////////

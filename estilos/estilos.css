@@ -84,6 +84,7 @@ html,body{
 #invisible{
 	display: none;
 }
+#invisi{display: none;}
 .corto{width: 120px;}
 .nombres{width: 200px;}
 .fecha{cursor: pointer;}
