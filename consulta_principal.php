@@ -27,9 +27,11 @@
 			<input type="text" class="celda nombres" value='<?= $rows["enajenante"] ?>'>
 			<input type="text" class="celda nombres" value='<?= $rows["adquiriente"] ?>'>
 			<input type="text" class="celda fecha" value='<?= cambiarFecha($rows["primer_aviso"]) ?>'>
+			<input type="text" class="celda fecha" value='<?= cambiarFecha($rows["entrega_primer"]) ?>'>
 			<input type="text" class="celda corto" value='<?= $rows["costo_primer"] ?>'>
 			<input type="text" class="celda fecha" value='<?= cambiarFecha($rows["segundo_aviso"]) ?>'>
 			<input type="text" class="celda fecha" value='<?= cambiarFecha($rows["testimonio"]) ?>'>
+			<input type="text" class="celda fecha" value='<?= cambiarFecha($rows["entrega_testimonio"]) ?>'>
 			<input type="text" class="celda corto" value='<?= $rows["costo_testimonio"] ?>'>
 			<input type="text" class="celda fecha" value='<?= cambiarFecha($rows["fecha_pago"]) ?>'>
 			<input type="text" class="celda fecha" value='<?= cambiarFecha($rows["fecha_salida"]) ?>'>

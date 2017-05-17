@@ -28,6 +28,11 @@ function datosInsertados() {
 	});
 }
 
+function convertirFecha(fecha){
+	var nueva = fecha.split('-');
+  	return nueva[2] + '/' + nueva[1] + '/' + nueva[0];
+}
+
 function borrarRegistro(clave){
 
 	var parametros = {
@@ -124,21 +129,23 @@ function preguntarFecha(elemento){
 	});
 }
 
-function funcionIngresar(caja1,caja2,caja3,caja4,caja5,caja6,caja7,caja8,caja9,caja10,caja11,caja12){
+function funcionIngresar(caja1,caja2,caja3,caja4,caja5,caja6,caja7,caja8,caja9,caja10,caja11,caja12,caja13,caja14){
 	
 	var parametros = {
 		"escritura" : caja1,
 		"enajenante" : caja2,
 		"adquiriente" : caja3,
 		"primer" : caja4,
-		"costo_primer" : caja5,
-		"segundo" : caja6,
-		"testimonio" : caja7,
-		"costo_testimonio" : caja8,
-		"pago" : caja9,
-		"salida" : caja10,
-		"entrega" : caja11,
-		"costo" : caja12
+		"entrega_primer" : caja5,
+		"costo_primer" : caja6,
+		"segundo" : caja7,
+		"testimonio" : caja8,
+		"entrega_testimonio" : caja9,
+		"costo_testimonio" : caja10,
+		"pago" : caja11,
+		"salida" : caja12,
+		"entrega" : caja13,
+		"costo" : caja14
 	};
 	$.ajax({
 		url: 'ingresar.php',
@@ -155,7 +162,7 @@ $(document).ready(function(){ //////// EVENTOS ////////
 
 	$('.entrada').on('keypress',function(event) {
 		if (event.which === 13) {
-			funcionIngresar( $('#caja1').val(), $('#caja2').val(), $('#caja3').val(), $('#caja4').val(), $('#caja5').val(), $('#caja6').val(), $('#caja7').val(), $('#caja8').val(), $('#caja9').val(), $('#caja10').val(), $('#caja11').val(), $('#caja12').val() );
+			funcionIngresar( $('#caja1').val(), $('#caja2').val(), $('#caja3').val(), $('#caja4').val(), $('#caja5').val(), $('#caja6').val(), $('#caja7').val(), $('#caja8').val(), $('#caja9').val(), $('#caja10').val(), $('#caja11').val(), $('#caja12').val(), $('#caja13').val(), $('#caja14').val() );
 		}
 	});
 
@@ -258,13 +265,23 @@ $(document).ready(function(){ //////// EVENTOS ////////
 	});
 
 	$('#wrapper2').css('display', 'none');
+	$('.total').css('display', 'none');
 
 	$('.boton_consulta').on('click',function() {
 
+		$('#wrapper3').remove();
+		$('#linea-titulo').remove();
+		$('.total').remove();
 		$('#wrapper2').css('display', 'inline-block');
+		$('.total').css('display', 'inline-block');
+
 		var fecha1 = $('#fecha1').val();
 		var fecha2 = $('#fecha2').val();
 		var columna = $('input[name=consulta]:checked').val();
+
+		if (columna == "primer_aviso") {columna = "entrega_primer";}
+		if (columna == "testimonio") {columna = "entrega_testimonio";}
+
 		var parametros = {
 			"fecha1" : fecha1,
 			"fecha2" : fecha2,
@@ -276,13 +293,56 @@ $(document).ready(function(){ //////// EVENTOS ////////
 			data: parametros,
 			dataType: 'json',
 			success: function(respuesta){
-				console.log(respuesta);
-				$.each(respuesta, function(index, item){
-					$('#wrapper2').append("<div class='wrapper-fila'>");					
-					$('#wrapper2').append(
-						"<input class='celda' readonly value='"+item.id_registro+"'> <input class='celda' readonly value='"+item.escritura+"'> <input class='celda' readonly value='"+item.enajenante+"'> <input class='celda' readonly value='"+item.adquiriente+"'> <input class='celda' readonly value='"+item.primer_aviso+"'> <input class='celda' readonly value='"+item.costo_primer+"'> <input class='celda' readonly value='"+item.segundo_aviso+"'> <input class='celda' readonly value='"+item.testimonio+"'> <input class='celda' readonly value='"+item.costo_testimonio+"'> <input class='celda' readonly value='"+item.fecha_pago+"'> <input class='celda' readonly value='"+item.fecha_salida+"'> <input class='celda' readonly value='"+item.fecha_entrega+"'> <input class='celda' readonly value='"+item.costo+"'>");
-					$('#wrapper2').append('</div>');
-				});
+
+				$("#content").append('<div class="total">Total: </div>');
+
+				var total = 0;
+				var numero = 0;
+
+				var variable = "";
+				if (columna=="entrega_primer") {variable = "Primer aviso";}
+				if (columna=="entrega_testimonio") {variable = "Testimonio";}
+
+				$('#wrapper2').append(
+					"<div id='linea-titulo' class='wrapper-fila'><div class='celda_titulo corto'>Escritura</div> <div class='celda_titulo nombres'>Enajenante</div> <div class='celda_titulo nombres'>Adquiriente</div> <div class='celda_titulo'>"+variable+"</div> <div class='celda_titulo'>Entrega</div> <div class='celda_titulo corto'>Costo</div> </div>");
+				$('#wrapper2').append("<div id='wrapper3'></div>");
+
+				if (columna=="entrega_primer") {
+
+					$.each(respuesta, function(index, item){
+						
+						numero = parseFloat(item.costo_primer);
+						total = total + numero;
+						$('#wrapper3').append(
+						"<div class='wrapper-fila'> <input class='celda corto' readonly value='"
+						+item.escritura+"'> <input class='celda nombres' readonly value='"
+						+item.enajenante+"'> <input class='celda nombres' readonly value='"
+						+item.adquiriente+"'> <input class='celda' readonly value='"
+						+convertirFecha(item.primer_aviso)+"'> <input class='celda' readonly value='"
+						+convertirFecha(item.entrega_primer)+"'> <input class='celda corto' readonly value='"
+						+item.costo_primer+"'> </div>");
+					});
+				}
+				if (columna=="entrega_testimonio"){
+
+					$.each(respuesta, function(index, item){
+
+						numero = parseFloat(item.costo_testimonio)
+						total = total + numero;
+						$('#wrapper3').append(
+						"<div class='wrapper-fila'> <input class='celda corto' readonly value='"
+						+item.escritura+"'> <input class='celda nombres' readonly value='"
+						+item.enajenante+"'> <input class='celda nombres' readonly value='"
+						+item.adquiriente+"'> <input class='celda' readonly value='"
+						+convertirFecha(item.testimonio)+"'> <input class='celda' readonly value='"
+						+convertirFecha(item.entrega_testimonio)+"'> <input class='celda corto' readonly value='"
+						+item.costo_testimonio+"'> </div>");
+					});
+				}
+
+				$(".total").append(total);
+				console.log("Total: "+total);
+
 			}
 		});
 

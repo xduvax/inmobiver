@@ -6,11 +6,8 @@
 	$columna = $_POST['columna'];
 	$arreglo = array();
 
-	if ($columna == "primer") {	$auxiliar = "primer_aviso";	}
-	if ($columna == "testimonio") {	$auxiliar = "testimonio"; }
-
 	$query_variable = "SELECT * FROM tabla_registros 
-		WHERE ".$auxiliar.">= ".$fecha1." AND ".$auxiliar."<= ".$fecha2." ORDER BY ".$auxiliar." ASC";
+		WHERE ".$columna.">= '".$fecha1."' AND ".$columna."<= '".$fecha2."' ORDER BY ".$columna." ASC";
 
 	$resultado = $mysqli->query($query_variable);
 	while ($rows = $resultado->fetch_assoc()):
