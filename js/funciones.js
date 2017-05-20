@@ -1,3 +1,5 @@
+var completodiv = "";
+
 function recargarPagina(){
 	location.reload(true);
 }
@@ -158,6 +160,7 @@ function funcionIngresar(caja1,caja2,caja3,caja4,caja5,caja6,caja7,caja8,caja9,c
 	});
 }
 
+
 $(document).ready(function(){ //////// EVENTOS ////////
 
 	$('.entrada').on('keypress',function(event) {
@@ -271,6 +274,7 @@ $(document).ready(function(){ //////// EVENTOS ////////
 
 		$('#wrapper3').remove();
 		$('#linea-titulo').remove();
+		$('#boton_pdf').remove();
 		$('.total').remove();
 		$('#wrapper2').css('display', 'inline-block');
 		$('.total').css('display', 'inline-block');
@@ -339,14 +343,29 @@ $(document).ready(function(){ //////// EVENTOS ////////
 						+item.costo_testimonio+"'> </div>");
 					});
 				}
-
 				$(".total").append(total);
-				console.log("Total: "+total);
-
+				$('#content').append('<button id="boton_pdf">Generar PDF</button>');
+				completodiv = $('#wrapper3').html();
 			}
 		});
 
 	});
 
-
 }); ///////// DOCUMENT READY /////////
+
+$(document).on('click', '#boton_pdf', function(){
+
+	var parametro= {
+		"documento" : completodiv
+	};
+	$.ajax({
+		url: 'documento.php',
+		type: 'POST',
+		data: parametro,
+		success: function(respuesta){
+			$('#invisible').html(respuesta);
+			console.log(respuesta);
+		}
+	});
+	
+});
