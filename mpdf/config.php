@@ -354,6 +354,10 @@ $this->defaultCSS = array(
 		'HYPHENS' => 'manual',	/* mPDF 5.6.08 */
 		'FONT-KERNING' => 'auto',	/* mPDF 6 */
 	),
+	'DIV' => array(
+		'MARGIN-BOTTOM' => '4px',
+		'DISPLAY' => 'INLINE-BLOCK',
+	),
 	'P' => array(
 		'MARGIN' => '1.12em 0',
 	),
@@ -540,7 +544,9 @@ $this->defaultCSS = array(
 	'INPUT' => array(
 		'FONT-FAMILY' => 'sans-serif',
 		'VERTICAL-ALIGN' => 'middle',
-		'FONT-SIZE' => '0.9em',
+		'FONT-SIZE' => '0.8em',
+		'WIDTH' => '100px',
+		'HEIGHT' => '12px',
 	),
 	'SELECT' => array(
 		'FONT-FAMILY' => 'sans-serif',

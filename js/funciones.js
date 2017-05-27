@@ -1,4 +1,5 @@
 var completodiv = "";
+var div = "";
 
 function recargarPagina(){
 	location.reload(true);
@@ -326,6 +327,7 @@ $(document).ready(function(){ //////// EVENTOS ////////
 						+convertirFecha(item.entrega_primer)+"'> <input class='celda corto' readonly value='"
 						+item.costo_primer+"'> </div>");
 					});
+					var auxiliar = "<div class='wrapper-fila'><div class='celda_titulo escritura'>Escritura</div><div class='celda_titulo nombres'>Enajenante</div><input class='celda_titulo nombres' value='Adquiriente'><input class='celda_titulo' value='Primer aviso'><input class='celda_titulo' value='Entrega'><input class='celda_titulo costo' value='Costo'></div>";
 				}
 				if (columna=="entrega_testimonio"){
 
@@ -342,10 +344,12 @@ $(document).ready(function(){ //////// EVENTOS ////////
 						+convertirFecha(item.entrega_testimonio)+"'> <input class='celda corto' readonly value='"
 						+item.costo_testimonio+"'> </div>");
 					});
+					var auxiliar = "<div class='wrapper-fila'><input value='Escritura'><input value='Enajenante'><input value='Adquiriente'><input value='Testimonio'><input value='Entrega'><input value='Costo'></div>";
 				}
 				$(".total").append(total);
 				$('#content').append('<button id="boton_pdf">Generar PDF</button>');
-				completodiv = $('#wrapper3').html();
+				completodiv = auxiliar + $('#wrapper3').html();
+				console.log(completodiv);
 			}
 		});
 
@@ -355,17 +359,6 @@ $(document).ready(function(){ //////// EVENTOS ////////
 
 $(document).on('click', '#boton_pdf', function(){
 
-	var parametro= {
-		"documento" : completodiv
-	};
-	$.ajax({
-		url: 'documento.php',
-		type: 'POST',
-		data: parametro,
-		success: function(respuesta){
-			$('#invisible').html(respuesta);
-			console.log(respuesta);
-		}
-	});
+	document.location.href = "documento.php?documento="+completodiv;
 	
 });

@@ -35,7 +35,6 @@
 		<div id="wrapper2" class="wrapper">
 
 		</div>
-
 		<!--<div class="total">Total: </div>-->
 		
 	</div>

@@ -1,0 +1,39 @@
+@import url(https://fonts.googleapis.com/css?family=Pangolin);
+@import url(https://fonts.googleapis.com/css?family=Sansita);
+@import url(https://fonts.googleapis.com/css?family=Lato);
+@import url(https://fonts.googleapis.com/css?family=Roboto);
+
+html,body{
+	background-color: #FAF0E6;
+}
+.wrapper-fila{
+	
+}
+.celda{
+	font-family: 'Lato', sans-serif;
+	font-size: 12px;
+	height: 25px;
+}
+.celda_titulo{
+	font-family: 'Lato', sans-serif;
+	border: 1px solid #000;
+	height: 20px;
+	font-size: 12px;
+	background-color: #fff;
+	display: inline-block;
+}
+.normal{
+	width: 70px;
+}
+.nombres{
+	width: 170px;
+}
+.escritura{
+	width: 55px;
+}
+.costo{
+	width: 40px;
+}
+.corto{
+	width: 40px;
+}

@@ -48,12 +48,13 @@ html,body{
 	width: 160px;
 	font-family: 'Lato', sans-serif;
 	font-size: 15px;
-	height: 25px;
+	min-height: 25px;
 	padding: 0px;
 	margin: 0px;
 	text-align: center;
 	display: inline-block;
 	border: 1px solid #000;
+	word-break: break-word;
 }
 .celda:hover{
 	background-color: #F2D6D6;
@@ -150,4 +151,10 @@ html,body{
 	margin-top: 30px;
 	margin-left: 300px;
 	font-size: 18px;
+}
+#temporal{
+	display: none;
+}
+#temporal2{
+	display: none;
 }
