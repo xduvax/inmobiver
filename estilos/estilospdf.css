@@ -4,36 +4,22 @@
 @import url(https://fonts.googleapis.com/css?family=Roboto);
 
 html,body{
-	background-color: #FAF0E6;
-}
-.wrapper-fila{
-	
+	/*background-color: #FAF0E6;*/
 }
 .celda{
-	font-family: 'Lato', sans-serif;
-	font-size: 12px;
-	height: 25px;
-}
-.celda_titulo{
-	font-family: 'Lato', sans-serif;
-	border: 1px solid #000;
-	height: 20px;
-	font-size: 12px;
-	background-color: #fff;
-	display: inline-block;
-}
-.normal{
 	width: 70px;
 }
-.nombres{
-	width: 170px;
-}
-.escritura{
+.corto{
 	width: 55px;
 }
-.costo{
-	width: 40px;
+.nombres{
+	width: 175px;
 }
-.corto{
-	width: 40px;
+.total{
+	margin-top: 20px;
+	float: right;
+	display: block;
+}
+input{
+	background-color: #fff;
 }

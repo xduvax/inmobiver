@@ -545,8 +545,7 @@ $this->defaultCSS = array(
 		'FONT-FAMILY' => 'sans-serif',
 		'VERTICAL-ALIGN' => 'middle',
 		'FONT-SIZE' => '0.8em',
-		'WIDTH' => '100px',
-		'HEIGHT' => '12px',
+		'TEXT-ALIGN' => 'CENTER',
 	),
 	'SELECT' => array(
 		'FONT-FAMILY' => 'sans-serif',

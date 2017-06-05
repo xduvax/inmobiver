@@ -1,5 +1,8 @@
-var completodiv = "";
+var resultados = "";
 var div = "";
+var auxiliar = "";
+var completo = "";
+var divtotal = "";
 
 function recargarPagina(){
 	location.reload(true);
@@ -319,15 +322,15 @@ $(document).ready(function(){ //////// EVENTOS ////////
 						numero = parseFloat(item.costo_primer);
 						total = total + numero;
 						$('#wrapper3').append(
-						"<div class='wrapper-fila'> <input class='celda corto' readonly value='"
-						+item.escritura+"'> <input class='celda nombres' readonly value='"
-						+item.enajenante+"'> <input class='celda nombres' readonly value='"
-						+item.adquiriente+"'> <input class='celda' readonly value='"
-						+convertirFecha(item.primer_aviso)+"'> <input class='celda' readonly value='"
-						+convertirFecha(item.entrega_primer)+"'> <input class='celda corto' readonly value='"
-						+item.costo_primer+"'> </div>");
+						"<div class='wrapper-fila'><input class='celda corto' readonly value='"
+						+item.escritura+"'><input class='celda nombres' readonly value='"
+						+item.enajenante+"'><input class='celda nombres' readonly value='"
+						+item.adquiriente+"'><input class='celda' readonly value='"
+						+convertirFecha(item.primer_aviso)+"'><input class='celda' readonly value='"
+						+convertirFecha(item.entrega_primer)+"'><input class='celda corto' readonly value='"
+						+item.costo_primer+"'></div>");
 					});
-					var auxiliar = "<div class='wrapper-fila'><div class='celda_titulo escritura'>Escritura</div><div class='celda_titulo nombres'>Enajenante</div><input class='celda_titulo nombres' value='Adquiriente'><input class='celda_titulo' value='Primer aviso'><input class='celda_titulo' value='Entrega'><input class='celda_titulo costo' value='Costo'></div>";
+					auxiliar = "<div class='wrapper-fila'><input class='corto' value='Escritura'><input class='nombres' value='Enajenante'><input class='nombres' value='Adquiriente'><input class='celda' value='Primer aviso'><input class='celda' value='Entrega'><input class='corto' value='Costo'></div>";
 				}
 				if (columna=="entrega_testimonio"){
 
@@ -336,20 +339,22 @@ $(document).ready(function(){ //////// EVENTOS ////////
 						numero = parseFloat(item.costo_testimonio)
 						total = total + numero;
 						$('#wrapper3').append(
-						"<div class='wrapper-fila'> <input class='celda corto' readonly value='"
-						+item.escritura+"'> <input class='celda nombres' readonly value='"
-						+item.enajenante+"'> <input class='celda nombres' readonly value='"
-						+item.adquiriente+"'> <input class='celda' readonly value='"
-						+convertirFecha(item.testimonio)+"'> <input class='celda' readonly value='"
-						+convertirFecha(item.entrega_testimonio)+"'> <input class='celda corto' readonly value='"
-						+item.costo_testimonio+"'> </div>");
+						"<div class='wrapper-fila'><input class='celda corto' readonly value='"
+						+item.escritura+"'><input class='celda nombres' readonly value='"
+						+item.enajenante+"'><input class='celda nombres' readonly value='"
+						+item.adquiriente+"'><input class='celda' readonly value='"
+						+convertirFecha(item.testimonio)+"'><input class='celda' readonly value='"
+						+convertirFecha(item.entrega_testimonio)+"'><input class='celda corto' readonly value='"
+						+item.costo_testimonio+"'></div>");
 					});
-					var auxiliar = "<div class='wrapper-fila'><input value='Escritura'><input value='Enajenante'><input value='Adquiriente'><input value='Testimonio'><input value='Entrega'><input value='Costo'></div>";
+					auxiliar = "<div class='wrapper-fila'><input class='corto' value='Escritura'><input class='nombres' value='Enajenante'><input class='nombres' value='Adquiriente'><input class='celda' value='Testimonio'><input class='celda' value='Entrega'><input class='corto' value='Costo'></div>";
 				}
 				$(".total").append(total);
 				$('#content').append('<button id="boton_pdf">Generar PDF</button>');
-				completodiv = auxiliar + $('#wrapper3').html();
-				console.log(completodiv);
+				resultados = $('#wrapper3').html();
+				completo = auxiliar + resultados;
+				divtotal = "<div class='total'>Total: "+total+"</div>";
+				completo = auxiliar + resultados + divtotal;
 			}
 		});
 
@@ -359,6 +364,6 @@ $(document).ready(function(){ //////// EVENTOS ////////
 
 $(document).on('click', '#boton_pdf', function(){
 
-	document.location.href = "documento.php?documento="+completodiv;
+	document.location.href = "documento.php?completo="+completo;
 	
 });
