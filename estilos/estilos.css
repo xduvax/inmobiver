@@ -161,3 +161,6 @@ html,body{
 #inutil{
 	display: none;
 }
+#municipio{
+	border: none !important;
+}

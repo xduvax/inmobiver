@@ -251,6 +251,15 @@ $(document).ready(function(){ //////// EVENTOS ////////
 		}
 	});
 
+	$(document).on('change','#municipio',function(){ // SELECT //
+		
+ 		var clave = $(this).siblings().first().val();
+ 		var campo = $(this).index();
+ 		var valor = $(this).val();
+
+ 		modificar(clave,campo,valor);
+  	});
+
 	$('.clave').on('click',function() {
 
 		var clave = $(this).val();

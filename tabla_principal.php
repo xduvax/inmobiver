@@ -15,6 +15,7 @@
 			<div id="wrapper1" class="wrapper">
 				<div id="div-titulo" class="wrapper-fila">
 					<div class="celda_titulo clave">Clave</div>
+					<div class="celda_titulo corto">Municipio</div>
 					<div class='celda_titulo corto'>Escritura</div>
 					<div class='celda_titulo nombres'>Enajenante</div>
 					<div class='celda_titulo nombres'>Adquiriente</div>

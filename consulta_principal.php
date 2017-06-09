@@ -23,6 +23,11 @@
 ?>
 		<div class="wrapper-fila">
 			<input type="text" readonly class="celda clave" value='<?= $rows["id_registro"] ?>'>
+			<select id="municipio" class="celda corto">
+				<option selected="true" disabled="disabled"><?= $rows['municipio'] ?></option>
+				<option>Veracruz</option>
+				<option>Boca del Rio</option>
+			</select>
 			<input type="text" class="celda corto" value='<?= $rows["escritura"] ?>'>
 			<input type="text" class="celda nombres" value='<?= $rows["enajenante"] ?>'>
 			<input type="text" class="celda nombres" value='<?= $rows["adquiriente"] ?>'>
