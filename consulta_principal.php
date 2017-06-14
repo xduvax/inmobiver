@@ -23,7 +23,7 @@
 ?>
 		<div class="wrapper-fila">
 			<input type="text" readonly class="celda clave" value='<?= $rows["id_registro"] ?>'>
-			<select id="municipio" class="celda corto">
+			<select id="municipio" class="celda corto prueba">
 				<option selected="true" disabled="disabled"><?= $rows['municipio'] ?></option>
 				<option>Veracruz</option>
 				<option>Boca del Rio</option>

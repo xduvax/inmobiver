@@ -37,12 +37,18 @@ html,body{
 }
 #wrapper1{
 	height: 300px;
-	/*position: relative;*/
+	position:relative;
 }
 .wrapper-fila{
 	width: 1000px;
 	white-space: nowrap; 
 	font-size: 0px; /* Esto es para que no existan espacios en blanco entre los DIV contenidos */
+}
+#contenedor-especial{
+	
+}
+#div-titulo{
+	
 }
 .celda{
 	width: 160px;
@@ -162,5 +168,16 @@ html,body{
 	display: none;
 }
 #municipio{
+}
+select{
+	text-align-last: center;
 	border: none !important;
+}
+.prueba{
+	width: 122px;
+}
+.consulta-municipio{
+	margin-top: 20px;
+	font-family: 'Lato', sans-serif;
+	font-size: 15px;
 }

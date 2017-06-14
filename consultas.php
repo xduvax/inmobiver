@@ -10,6 +10,14 @@
 	</div>
 
 <div class="tabla_principal">
+
+	<div>
+		<select class="consulta-municipio">
+			<option selected disabled>Municipio</option>
+			<option>Veracruz</option>
+			<option>Boca del Rio</option>
+		</select>
+	</div>
 	<div id="posicionado" class="contenido">
 
 		<a href='tabla_principal.php' id="boton_atras">Regresar</a>

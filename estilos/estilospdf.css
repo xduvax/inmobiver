@@ -7,13 +7,17 @@ html,body{
 	/*background-color: #FAF0E6;*/
 }
 .celda{
-	width: 70px;
+	width: 68px;
+	font-size: 10px;
 }
 .corto{
-	width: 55px;
+	width: 52px;
+}
+.costo{
+	width: 45px;
 }
 .nombres{
-	width: 175px;
+	width: 155px;
 }
 .total{
 	margin-top: 20px;

@@ -135,23 +135,24 @@ function preguntarFecha(elemento){
 	});
 }
 
-function funcionIngresar(caja1,caja2,caja3,caja4,caja5,caja6,caja7,caja8,caja9,caja10,caja11,caja12,caja13,caja14){
+function funcionIngresar(caja1,caja2,caja3,caja4,caja5,caja6,caja7,caja8,caja9,caja10,caja11,caja12,caja13,caja14,caja15){
 	
 	var parametros = {
-		"escritura" : caja1,
-		"enajenante" : caja2,
-		"adquiriente" : caja3,
-		"primer" : caja4,
-		"entrega_primer" : caja5,
-		"costo_primer" : caja6,
-		"segundo" : caja7,
-		"testimonio" : caja8,
-		"entrega_testimonio" : caja9,
-		"costo_testimonio" : caja10,
-		"pago" : caja11,
-		"salida" : caja12,
-		"entrega" : caja13,
-		"costo" : caja14
+		"municipio" : caja1,
+		"escritura" : caja2,
+		"enajenante" : caja3,
+		"adquiriente" : caja4,
+		"primer" : caja5,
+		"entrega_primer" : caja6,
+		"costo_primer" : caja7,
+		"segundo" : caja8,
+		"testimonio" : caja9,
+		"entrega_testimonio" : caja10,
+		"costo_testimonio" : caja11,
+		"pago" : caja12,
+		"salida" : caja13,
+		"entrega" : caja14,
+		"costo" : caja15
 	};
 	$.ajax({
 		url: 'ingresar.php',
@@ -168,8 +169,15 @@ function funcionIngresar(caja1,caja2,caja3,caja4,caja5,caja6,caja7,caja8,caja9,c
 $(document).ready(function(){ //////// EVENTOS ////////
 
 	$('.entrada').on('keypress',function(event) {
+		var aux = "";
+		var sele = "";
 		if (event.which === 13) {
-			funcionIngresar( $('#caja1').val(), $('#caja2').val(), $('#caja3').val(), $('#caja4').val(), $('#caja5').val(), $('#caja6').val(), $('#caja7').val(), $('#caja8').val(), $('#caja9').val(), $('#caja10').val(), $('#caja11').val(), $('#caja12').val(), $('#caja13').val(), $('#caja14').val() );
+
+			sele = $('#caja1').val();
+			if(sele=="Municipio"){sele="";}
+			else{aux=sele;}
+
+			funcionIngresar( sele, $('#caja2').val(), $('#caja3').val(), $('#caja4').val(), $('#caja5').val(), $('#caja6').val(), $('#caja7').val(), $('#caja8').val(), $('#caja9').val(), $('#caja10').val(), $('#caja11').val(), $('#caja12').val(), $('#caja13').val(), $('#caja14').val(), $('#caja15').val() );
 		}
 	});
 
@@ -252,7 +260,7 @@ $(document).ready(function(){ //////// EVENTOS ////////
 	});
 
 	$(document).on('change','#municipio',function(){ // SELECT //
-		
+
  		var clave = $(this).siblings().first().val();
  		var campo = $(this).index();
  		var valor = $(this).val();
@@ -292,6 +300,7 @@ $(document).ready(function(){ //////// EVENTOS ////////
 		$('#wrapper2').css('display', 'inline-block');
 		$('.total').css('display', 'inline-block');
 
+		var municipio = $('.consulta-municipio').val();
 		var fecha1 = $('#fecha1').val();
 		var fecha2 = $('#fecha2').val();
 		var columna = $('input[name=consulta]:checked').val();
@@ -302,7 +311,8 @@ $(document).ready(function(){ //////// EVENTOS ////////
 		var parametros = {
 			"fecha1" : fecha1,
 			"fecha2" : fecha2,
-			"columna" : columna
+			"columna" : columna,
+			"municipio" : municipio
 		};
 		$.ajax({
 			url: 'consulta_fecha.php',
@@ -310,7 +320,7 @@ $(document).ready(function(){ //////// EVENTOS ////////
 			data: parametros,
 			dataType: 'json',
 			success: function(respuesta){
-
+				
 				$("#content").append('<div class="total">Total: </div>');
 
 				var total = 0;
@@ -321,7 +331,7 @@ $(document).ready(function(){ //////// EVENTOS ////////
 				if (columna=="entrega_testimonio") {variable = "Testimonio";}
 
 				$('#wrapper2').append(
-					"<div id='linea-titulo' class='wrapper-fila'><div class='celda_titulo corto'>Escritura</div> <div class='celda_titulo nombres'>Enajenante</div> <div class='celda_titulo nombres'>Adquiriente</div> <div class='celda_titulo'>"+variable+"</div> <div class='celda_titulo'>Entrega</div> <div class='celda_titulo corto'>Costo</div> </div>");
+					"<div id='linea-titulo' class='wrapper-fila'><div class='celda_titulo corto'>Municipio</div><div class='celda_titulo corto'>Escritura</div> <div class='celda_titulo nombres'>Enajenante</div> <div class='celda_titulo nombres'>Adquiriente</div> <div class='celda_titulo'>"+variable+"</div> <div class='celda_titulo'>Entrega</div> <div class='celda_titulo corto'>Costo</div> </div>");
 				$('#wrapper2').append("<div id='wrapper3'></div>");
 
 				if (columna=="entrega_primer") {
@@ -332,14 +342,15 @@ $(document).ready(function(){ //////// EVENTOS ////////
 						total = total + numero;
 						$('#wrapper3').append(
 						"<div class='wrapper-fila'><input class='celda corto' readonly value='"
+						+item.municipio+"'><input class='celda corto' readonly value='"
 						+item.escritura+"'><input class='celda nombres' readonly value='"
 						+item.enajenante+"'><input class='celda nombres' readonly value='"
 						+item.adquiriente+"'><input class='celda' readonly value='"
 						+convertirFecha(item.primer_aviso)+"'><input class='celda' readonly value='"
-						+convertirFecha(item.entrega_primer)+"'><input class='celda corto' readonly value='"
+						+convertirFecha(item.entrega_primer)+"'><input class='celda corto costo' readonly value='"
 						+item.costo_primer+"'></div>");
 					});
-					auxiliar = "<div class='wrapper-fila'><input class='corto' value='Escritura'><input class='nombres' value='Enajenante'><input class='nombres' value='Adquiriente'><input class='celda' value='Primer aviso'><input class='celda' value='Entrega'><input class='corto' value='Costo'></div>";
+					auxiliar = "<div class='wrapper-fila'><input class='corto' value='Municipio'><input class='corto' value='Escritura'><input class='nombres' value='Enajenante'><input class='nombres' value='Adquiriente'><input class='celda' value='Primer aviso'><input class='celda' value='Entrega'><input class='corto costo' value='Costo'></div>";
 				}
 				if (columna=="entrega_testimonio"){
 
@@ -349,14 +360,15 @@ $(document).ready(function(){ //////// EVENTOS ////////
 						total = total + numero;
 						$('#wrapper3').append(
 						"<div class='wrapper-fila'><input class='celda corto' readonly value='"
+						+item.municipio+"'><input class='celda corto' readonly value='"
 						+item.escritura+"'><input class='celda nombres' readonly value='"
 						+item.enajenante+"'><input class='celda nombres' readonly value='"
 						+item.adquiriente+"'><input class='celda' readonly value='"
 						+convertirFecha(item.testimonio)+"'><input class='celda' readonly value='"
-						+convertirFecha(item.entrega_testimonio)+"'><input class='celda corto' readonly value='"
+						+convertirFecha(item.entrega_testimonio)+"'><input class='celda corto costo' readonly value='"
 						+item.costo_testimonio+"'></div>");
 					});
-					auxiliar = "<div class='wrapper-fila'><input class='corto' value='Escritura'><input class='nombres' value='Enajenante'><input class='nombres' value='Adquiriente'><input class='celda' value='Testimonio'><input class='celda' value='Entrega'><input class='corto' value='Costo'></div>";
+					auxiliar = "<div class='wrapper-fila'><input class='corto' value='Municipio'><input class='corto' value='Escritura'><input class='nombres' value='Enajenante'><input class='nombres' value='Adquiriente'><input class='celda' value='Testimonio'><input class='celda' value='Entrega'><input class='corto costo' value='Costo'></div>";
 				}
 				$(".total").append(total);
 				$('#content').append('<button id="boton_pdf">Generar PDF</button>');

@@ -2,6 +2,7 @@
 	
 	include "conexion.php";
 
+	$municipio = $_POST['municipio'];
 	$escritura = $_POST['escritura'];
 	$enajenante = $_POST['enajenante'];
 	$adquiriente = $_POST['adquiriente'];
@@ -27,7 +28,8 @@
 	if ($entrega == "") {$entrega = "0000-00-00";}
 
 	$query_variable = "INSERT INTO tabla_registros
-		(escritura,
+		(municipio,
+		escritura,
 		enajenante,
 		adquiriente,
 		primer_aviso,
@@ -41,8 +43,9 @@
 		fecha_salida,
 		fecha_entrega,
 		costo)
-		VALUES 
-		('".$escritura."',
+		VALUES
+		('".$municipio."',
+		'".$escritura."',
 		'".$enajenante."',
 		'".$adquiriente."',
 		'".$primer."',
