@@ -385,6 +385,8 @@ $(document).ready(function(){ //////// EVENTOS ////////
 
 $(document).on('click', '#boton_pdf', function(){
 
-	document.location.href = "documento.php?completo="+completo;
+	var codificado = btoa(completo);
+	console.log("codificado :"+codificado);
+	document.location.href = "documento.php?completo="+codificado;
 	
 });
