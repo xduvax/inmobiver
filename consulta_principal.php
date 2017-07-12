@@ -32,8 +32,9 @@
 			<input type="text" class="celda nombres" value='<?= $rows["enajenante"] ?>'>
 			<input type="text" class="celda nombres" value='<?= $rows["adquiriente"] ?>'>
 			<input type="text" class="celda fecha" value='<?= cambiarFecha($rows["primer_aviso"]) ?>'>
-			<input type="file" name="file" id="file">
-			<label id="label1" for="file">Elige un archivo</label>
+			<input type="file" name="archivo" id="fileToUpload">
+			<label id="label1" for="fileToUpload">Elige un archivo</label>
+			<label class="boton-archivo">Subir</label>
 			<input type="text" class="celda fecha" value='<?= cambiarFecha($rows["entrega_primer"]) ?>'>
 			<input type="text" class="celda corto" value='<?= $rows["costo_primer"] ?>'>
 			<input type="text" class="celda fecha" value='<?= cambiarFecha($rows["segundo_aviso"]) ?>'>

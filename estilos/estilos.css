@@ -60,7 +60,7 @@ html,body{
 	text-align: center;
 	display: inline-block;
 	border: 1px solid #000;
-	word-break: break-word;
+	/*word-break: break-word;*/
 }
 .celda:hover{
 	background-color: #F2D6D6;
@@ -181,7 +181,7 @@ select{
 	font-family: 'Lato', sans-serif;
 	font-size: 15px;
 }
-#file{
+#fileToUpload{
 	width: 0.1px;
 	height: 0.1px;
 	opacity: 0;
@@ -190,12 +190,43 @@ select{
 	z-index: -1;
 }
 #label1{
-	width: 160px;
+	width: 150px;
 	height: 25px;
 	font-size: 15px;
-	background-color: #77F5DC;
+	/*background-color: #77F5DC;*/
+	background-color: #E3B372;
+	border:1px solid #000;
 	color: #000;
 	display: inline-block;
 	font-family: 'Lato', sans-serif;
 	cursor: pointer;
+	vertical-align: top;
+}
+.boton-archivo{
+	width: 100px;
+	height: 25px;
+	border: 1px solid #000;
+	font-size: 15px;
+	display: inline-block;
+	background-color: yellow;
+	color: #fff;
+	font-family: 'Lato', sans-serif;
+	vertical-align: top;
+}
+.celda-archivo{
+	width: 252px;
+}
+.prueba123{
+	width: 160px;
+	min-height: 25px;
+	background-color: yellow;
+	color: #000;
+	font-family: 'Lato', sans-serif;
+	font-size: 15px;
+	display: inline-block;
+	border:1px solid #000;
+	margin: 0px;
+	padding: 0px;
+	outline:0px;
+	vertical-align: top;
 }

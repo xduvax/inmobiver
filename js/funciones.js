@@ -381,6 +381,24 @@ $(document).ready(function(){ //////// EVENTOS ////////
 
 	});
 
+	$('#fileToUpload').on('change', function(event) { // Subida de archivos
+		
+        var formData = new FormData();
+        formData.append('archivo', $(this)[0].files[0]); //$(this).prop('files')[0]
+
+		$.ajax({
+			url: 'subida.php',
+			type: 'POST',
+			data: formData,
+			processData: false,
+			success: function(respuesta){
+				//$('#invisible').html(respuesta);
+				alert(respuesta);
+			}
+		});
+
+	});
+
 }); ///////// DOCUMENT READY /////////
 
 $(document).on('click', '#boton_pdf', function(){
