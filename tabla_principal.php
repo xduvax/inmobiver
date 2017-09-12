@@ -21,7 +21,9 @@
 						<div class='celda_titulo nombres'>Enajenante</div>
 						<div class='celda_titulo nombres'>Adquiriente</div>
 						<div class='celda_titulo'>Primer Aviso</div>
+
 						<div class='celda_titulo celda-archivo'>Archivo</div>
+						
 						<div class='celda_titulo'>Entrega</div>
 						<div class='celda_titulo corto'>Costo</div>
 						<div class='celda_titulo'>Segundo Aviso</div>
@@ -34,8 +36,11 @@
 						<div class='celda_titulo corto'>Costo</div>
 					</div>
 				</div>
+
+				<form id="formulario1" method="post" enctype="multipart/form-data">
+					<?php include "consulta_principal.php"; ?>
+				</form>
 				
-				<?php include "consulta_principal.php"; ?>
 			</div>
 
 		</div>

@@ -4,6 +4,17 @@ var auxiliar = "";
 var completo = "";
 var divtotal = "";
 
+function idDinamicos(i){
+
+	var archivo = "archivo"+i;
+	var label = "label"+i;
+
+	$("#identificador"+i).append('<input class="archivo" id="'+archivo+'" type="file" name="archivo">');
+	$('#identificador'+i).append('<label class="nuevo-label" id="'+label+'" for="'+archivo+'">Elige un archivo</label>');
+	$('#identificador'+i).append('<div id="boton-archivo'+i+'" class="boton-archivo">Subir</div>');
+
+}
+
 function recargarPagina(){
 	location.reload(true);
 }
@@ -381,15 +392,19 @@ $(document).ready(function(){ //////// EVENTOS ////////
 
 	});
 
-	$('#fileToUpload').on('change', function(event) { // Subida de archivos
+	$('.boton-archivo').on('click', function() { // Subida de archivos
 		
+		var id = this.id;
+		var numero = id.substring(13,14);
+
         var formData = new FormData();
-        formData.append('archivo', $(this)[0].files[0]); //$(this).prop('files')[0]
+        formData.append('archivo',document.getElementById('archivo'+numero).files[0]);
 
 		$.ajax({
 			url: 'subida.php',
 			type: 'POST',
 			data: formData,
+			contentType: false,
 			processData: false,
 			success: function(respuesta){
 				//$('#invisible').html(respuesta);
@@ -398,6 +413,18 @@ $(document).ready(function(){ //////// EVENTOS ////////
 		});
 
 	});
+
+	$('.archivo').on('change', function(event) {
+
+		var id = this.id;
+		var numero = id.substring(7,8);
+		
+		var nombre = document.getElementById('archivo'+numero);
+		var variable = nombre.files[0].name;
+		document.getElementById('label'+numero).innerHTML = variable;
+
+	});
+
 
 }); ///////// DOCUMENT READY /////////
 

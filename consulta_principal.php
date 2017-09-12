@@ -19,9 +19,14 @@
 
 	$query_variable = "SELECT * FROM tabla_registros";
 	$resultado = $mysqli->query($query_variable);
+	$filas = $resultado->num_rows;
+	$i = 0;
 	while ($rows = $resultado->fetch_assoc()):
+	$i = $i + 1;
+	$identificador = "identificador".$i;
 ?>
-		<div class="wrapper-fila">
+		<div id="<?= $identificador ?>" class="wrapper-fila">
+
 			<input type="text" readonly class="celda clave" value='<?= $rows["id_registro"] ?>'>
 			<select id="municipio" class="celda corto prueba">
 				<option selected="true" disabled="disabled"><?= $rows['municipio'] ?></option>
@@ -32,9 +37,12 @@
 			<input type="text" class="celda nombres" value='<?= $rows["enajenante"] ?>'>
 			<input type="text" class="celda nombres" value='<?= $rows["adquiriente"] ?>'>
 			<input type="text" class="celda fecha" value='<?= cambiarFecha($rows["primer_aviso"]) ?>'>
-			<input type="file" name="archivo" id="fileToUpload">
-			<label id="label1" for="fileToUpload">Elige un archivo</label>
-			<label class="boton-archivo">Subir</label>
+			
+			<?php echo "<script type='text/javascript'>idDinamicos(".$i.");</script>"; ?>
+			<!--<input id="archivo1" type="file" name="name_archivo">
+			<label id="label1" for="archivo1">Elige un archivo</label>
+			<div id="boton_archivo">Sube archivo</div>-->
+		
 			<input type="text" class="celda fecha" value='<?= cambiarFecha($rows["entrega_primer"]) ?>'>
 			<input type="text" class="celda corto" value='<?= $rows["costo_primer"] ?>'>
 			<input type="text" class="celda fecha" value='<?= cambiarFecha($rows["segundo_aviso"]) ?>'>
@@ -45,6 +53,7 @@
 			<input type="text" class="celda fecha" value='<?= cambiarFecha($rows["fecha_salida"]) ?>'>
 			<input type="text" class="celda fecha" value='<?= cambiarFecha($rows["fecha_entrega"]) ?>'>
 			<input type="text" class="celda corto" value='<?= $rows["costo"] ?>'>
+			
 		</div>
 <?php
 	endwhile;
